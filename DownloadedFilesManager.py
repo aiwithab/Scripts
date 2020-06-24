@@ -1,59 +1,47 @@
 import os
 import shutil
 
-path = '/home/aiwithab/Downloads/'
-names = os.listdir(path)
-folder_name = ['Images', 'Audio', 'Videos', 'Documents', 'Softwares']
-       
+path = '/home/hafeez/Downloads/'      # Path: to where you want to sort the files
+
+files = os.listdir(path) # list all the files and store list in files variable
+
+folder_name = ['Images', 'Audios', 'Videos', 'Documents', 'Softwares'] # name of folders to be created if not already present
+
+    # Extensions are categorised based on our prefrence and already provided to be searched in every file name
+    # if found it will be moved to the folder based on the file extension.
+    # If you want to add or remove any extension do it in list below.
+
+
+image_extensions = ['.png','.jpg','.jpeg','.fig','.bmp','.gif','.tiff','.psd','.raw','.svg']
+audio_extensions = ['.mp3','.m4a','.wav']
+video_extensions = ['.mp4','.ts','.mkv','.web','.mpg','.mp2','.mpe','.mpe','.mpv','.ogg','.m4v','.m4p','.avi','.wmv','.mov','.qt' ,'.flv','.swf']
+document_extensions = ['.EXE','.csv','.mdj','.TXT','.txt','.html','.tex','.pdf','.PDF','.xps','.doc','.docx','.ppt','.pptx','.xls','.xml','.xslx']
+software_extensions = ['.json','.img','.exe','.deb','.tgz','.sh','.tar','.tar','.zip','.tar','.iso','.apk','.app','.7z','.zip','.rpm','.sit','.rar','.pkg']
+
+    # Extension lists are stored in one list to avoid repetition of code
+
+extensions = [image_extensions, audio_extensions, video_extensions, document_extensions, software_extensions]
+
+# Creating folders if not already present
+
 for x in range(0,5):
     if not os.path.exists(path+folder_name[x]):
         os.makedirs(path+folder_name[x])
 
-for files in  names:
-    if ".svg" in files and not os.path.exists(path+'Images/'+files):
-        shutil.move(path+files, path+'Images/'+files)
-    if ".jpg" in files and not os.path.exists(path+'Images/'+files):
-        shutil.move(path+files, path+'Images/'+files)
-    if ".jpeg" in files and not os.path.exists(path+'Images/'+files):
-        shutil.move(path+files, path+'Images/'+files)
+
+# Function to move files based on its extension
+# extension is provided from list and folder from folder_list list
+
+def moveFile(extension,folder_as_per_extension):
     
-    if ".mp3" in files and not os.path.exists(path+'Audio/'+files):
-        shutil.move(path+files, path+'Audio/'+files)
-    if ".m4a" in files and not os.path.exists(path+'Audio/'+files):
-        shutil.move(path+files, path+'Audio/'+files)
+    for file in files:
 
-    if ".mp4" in files and not os.path.exists(path+'Videos/'+files):
-        shutil.move(path+files, path+'Videos/'+files)
-    if ".mkv" in files and not os.path.exists(path+'Videos/'+files):
-        shutil.move(path+files, path+'Videos/'+files)
+        if extension in file and not os.path.exists(path+f'{folder_as_per_extension}/'+file): # checks if extension is present in file name and location of file
+            shutil.move(path+file, path+f'{folder_as_per_extension}/'+file) # moves file to desired folder
+    
 
-    if ".pdf" in files and not os.path.exists(path+'Documents/'+files):
-        shutil.move(path+files, path+'Documents/'+files)
-    if ".xps" in files and not os.path.exists(path+'Documents/'+files):
-        shutil.move(path+files, path+'Documents/'+files)
-    if ".doc" in files and not os.path.exists(path+'Documents/'+files):
-        shutil.move(path+files, path+'Documents/'+files)
-    if ".docx" in files and not os.path.exists(path+'Documents/'+files):
-        shutil.move(path+files, path+'Documents/'+files)
-    if ".pptx" in files and not os.path.exists(path+'Documents/'+files):
-        shutil.move(path+files, path+'Documents/'+files)
-    if ".xlsx" in files and not os.path.exists(path+'Documents/'+files):
-        shutil.move(path+files, path+'Documents/'+files)
-
-
-    if ".exe" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
-    if ".deb" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
-    if ".sh" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
-    if ".tar.gz" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
-    if ".tar.xz" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
-    if ".zip" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
-    if ".tar.bz2" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
-    if ".iso" in files and not os.path.exists(path+'Softwares/'+files):
-        shutil.move(path+files, path+'Softwares/'+files)
+folder_iterator=0
+for type_of_extension in extensions:
+    for extension in type_of_extension:
+        moveFile(extension,folder_name[folder_iterator])
+    folder_iterator=folder_iterator+1

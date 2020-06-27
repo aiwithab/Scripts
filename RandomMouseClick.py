@@ -6,8 +6,6 @@ import random
 import time
 
 
-# x_dim, y_dim = mouse.screen_size()
-
 while True:
 
     win32api.SetCursorPos((random.randint(200, 400), random.randint(400, 550)))

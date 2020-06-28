@@ -1,0 +1,7 @@
+# To install all the dependencies
+# run 'pip install -r requirements.txt' in command-line(terminal)
+
+pywin32
+bs4
+pytube
+playsound

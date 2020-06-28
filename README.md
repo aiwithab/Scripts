@@ -15,3 +15,6 @@
 ## 4. [YouTube video downloader](https://github.com/aiwithab/Scripts/blob/master/youtubeDownloader.py)
 
 - It's a simple CLI tool to download youtube videos by providing ```link``` of video and selecting the quality of video.
+
+
+# To contribute in this repository please read [CONTRIBUTING.md](https://github.com/aiwithab/Scripts/blob/master/CONTRIBUTING.md).

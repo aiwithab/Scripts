@@ -1,5 +1,34 @@
 # SCRIPTS
 
+## 0. [Installing Dependencies](https://github.com/aiwithab/Scripts/blob/master/README.md)
+
+- Run following lines
+### Debian
+* sudo apt install python3 
+* sudo apt install python3-pip
+* pip install -r requirements.txt
+
+### CentOS/RHEL
+* sudo yum install python3
+* sudo yum install epel-release
+* sudo yum install python-pip                   
+* pip install -r requirements.txt
+
+### Fedora
+* sudo dnf install python3                  
+* pip install -r requirements.txt
+
+### Arch
+* sudo pacman -S python3
+* sudo pacman -S python-pip                   
+* pip install -r requirements.txt
+
+### openSUSE
+* sudo zypper install python3
+* sudo zypper install python3-pip                   
+* pip install -r requirements.txt
+
+
 ## 1. [Amazon Pricing](https://github.com/aiwithab/Scripts/blob/master/AmazonPricingScript.py)
 
 - Amazon pricing script let us check price again and again at provided time period and if the price of the product gets below the ```threshold``` value that we have set, script sends us mail to inform about drop of price for given product.
